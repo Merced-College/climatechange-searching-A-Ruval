@@ -7,12 +7,13 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "/workspaces/climatechange-searching-A-Ruval/main.cpp",
+                "/workspaces/climatechange-searching-A-Ruval/StateClimate.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "/workspaces/climatechange-searching-A-Ruval/main"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "/workspaces/climatechange-searching-A-Ruval"
             },
             "problemMatcher": [
                 "$gcc"

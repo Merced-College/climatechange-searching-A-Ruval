@@ -9,7 +9,14 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "/workspaces/climatechange-searching-A-Ruval/main.cpp",
+                "/workspaces/climatechange-searching-A-Ruval/StateClimate.cpp",
+                "-o",
+                "/workspaces/climatechange-searching-A-Ruval/main"
+            ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
