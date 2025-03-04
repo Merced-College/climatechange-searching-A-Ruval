@@ -4,6 +4,7 @@
 #include <sstream>
 #include <map>
 #include <string>
+#include <algorithm>
 #include "StateClimate.h"
 
 // Utility function to convert a string to uppercase
@@ -50,13 +51,15 @@ void searchAndDisplay(const std::vector<StateClimate>& data, const std::string& 
 
     std::string upperStateName = toUpperCase(stateName);
 
-    // Linear search from the binary search index to find all instances
+// Linear search from the binary search index to find all instances
     while (index < data.size() && toUpperCase(data[index].getStateName()) == upperStateName) {
         data[index].display();
         index++;
     }
 }
-
+// Set the FIPS numbers with the corresponding state names
+// Read the climate data from the file and store it in a vector
+// Sort the climate data by state name for binary search
 int main() {
     std::vector<StateClimate> climateData;
     std::map<int, std::string> fipsToStateName = {
@@ -81,7 +84,7 @@ int main() {
         std::cerr << "Error opening file!" << std::endl;
         return 1;
     }
-
+// Read the climate data from the file and store it in a vector
     std::string line;
     std::getline(file, line); // Skip header line
     while (std::getline(file, line)) {
@@ -92,14 +95,14 @@ int main() {
 
         ss >> fips >> comma >> year >> comma >> temp >> comma >> tempc;
 
-        // Get the state name from the fipsToStateName map
+// Get the state name from the fipsToStateName map
         std::string stateName = fipsToStateName[fips];
         climateData.emplace_back(fips, year, temp, tempc, stateName);
     }
 
     file.close();
 
-    // Sort climateData by state name for binary search
+// Sort climateData by state name for binary search
     std::sort(climateData.begin(), climateData.end(), [](const StateClimate& a, const StateClimate& b) {
         return a.getStateName() < b.getStateName();
     });
